@@ -466,48 +466,39 @@ function gameLoop() {
 
   //axis
 
-  if (ejes) {
-    switch (gp.axes[nEjeX] * invertX) {
-      case -1:
+   if (ejes) {
+    var axisX = gp.axes[nEjeX] * invertX;
+    if(axisX >= -1 && axisX <= -0.75) {
         palado.classList.remove("invisible");
         palotrolao.classList.add("invisible");
 
         brazoi = 1;
-        break;
-      case 1:
+    } else if(axisX >= 0.75 && axisX <= 1) {
         palado.classList.add("invisible");
         palotrolao.classList.remove("invisible");
         brazoi = 3;
         left0.classList.remove("invisible");
         left1.classList.add("invisible");
         left2.classList.add("invisible");
-        // console.log("izq");
-        break;
-      default:
+    } else {
         palado.classList.add("invisible");
         palotrolao.classList.add("invisible");
-        // console.log("neutro");
-        break;
     }
 
-    switch (gp.axes[nEjeY] * invertY) {
-      case 1:
+    var axisY = gp.axes[nEjeY] * invertY;
+    if(axisY >= 0.75 && axisY <= 1) {
         parriba.classList.remove("invisible");
         pabajo.classList.add("invisible");
 
         brazoi = 2;
-        break;
-      case -1:
+    } else if(axisY >= -1 && axisY <= -0.75) {
         parriba.classList.add("invisible");
         pabajo.classList.remove("invisible");
 
         brazoi = 4;
-        break;
-      default:
+    } else {
         parriba.classList.add("invisible");
         pabajo.classList.add("invisible");
-
-        break;
     }
   } else {
     switch (x) {
